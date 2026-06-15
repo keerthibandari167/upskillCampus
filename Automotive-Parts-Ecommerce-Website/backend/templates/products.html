@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="nav">
+    <a href="/products">Products</a>
+    <a href="/cart">Cart</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<h1>Automotive Products</h1>
+
+<div class="container">
+
+{% for id, item in products.items() %}
+    <div class="card">
+        <h3>{{ item.name }}</h3>
+        <p>₹{{ item.price }}</p>
+        <a href="/add_to_cart/{{ item.id }}">
+            <button>Add to Cart</button>
+        </a>
+    </div>
+{% endfor %}
+
+</div>
+
+</body>
+</html>

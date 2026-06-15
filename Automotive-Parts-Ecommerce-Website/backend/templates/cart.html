@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Your Cart</h1>
+
+<a href="/products"><button>Continue Shopping</button></a>
+<a href="/logout"><button>Logout</button></a>
+
+<div class="container">
+
+{% for item in cart %}
+    <div class="card">
+        <h3>{{ item.name }}</h3>
+        <p>₹{{ item.price }}</p>
+        <a href="/remove/{{ loop.index0 }}">
+            <button>Remove</button>
+        </a>
+    </div>
+{% endfor %}
+
+</div>
+
+<h2>Total: ₹{{ total }}</h2>
+
+</body>
+</html>
